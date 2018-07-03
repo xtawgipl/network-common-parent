@@ -1,0 +1,15 @@
+server:
+    port: 0
+    context-path: /
+logging:
+    config: classpath:logback.xml
+nettyx:
+    client:
+        dataHandlerClass: com.github.zhangjj.app.handler.HearbeatNettyxDataHandler
+    server:
+        dataHandlerClass: com.github.zhangjj.app.handler.HearbeatNettyxDataHandler
+        inetHost: 127.0.0.1
+        inetPort: 8765
+        readTimeout: 5
+        writeTimeout: 0
+        maxObjectSize: 1048576

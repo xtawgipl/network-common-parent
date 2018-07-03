@@ -1,0 +1,35 @@
+/network-common-core/target
+/network-common-server-starter/target
+/network-common-client-starter/target
+/network-common-test/target
+
+# Eclipse Project files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA Project files
+.idea
+*.iml
+*.ipr
+*.iws
+
+*.class
+*.log
+*.bak
+*.tem
+*.temp
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+bin/
+gen/
+.DS_Store
+Thumbs.db

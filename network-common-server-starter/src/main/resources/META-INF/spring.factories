@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.nettyx.network.commons.starter.NettyxServerAutoConfiguration
