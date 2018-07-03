@@ -9,6 +9,7 @@
    </dependency>
    ```
 maven配置好后项目启动时会自动装配并启动nettyx服务端监听消息。
+
 客户端maven引用：
 ```
 <dependency>
