@@ -17,7 +17,7 @@ maven配置好后项目启动时会自动装配并启动nettyx服务端监听消
        <artifactId>network-common-client-starter</artifactId>
    </dependency>
    ```
-### application.yml文件中添加配置    
+### application.yml文件中添加配置:    
   ```
   nettyx:
          client:
