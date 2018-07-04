@@ -1,5 +1,8 @@
 # 基于netty的springboot通信插件
-基于netty的springboot通信插件，springboot自动装配方式实现。
+1. springboot自动装配方式实现。
+2. 扩展netty使用kryo序列化。
+
+## 使用方式
 ### 使用时服务端maven引用：
 
 ```
