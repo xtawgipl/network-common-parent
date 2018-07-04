@@ -12,6 +12,8 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import io.nettyx.network.commons.codec.KryoDecoder;
+import io.nettyx.network.commons.codec.KryoEncoder;
 import io.nettyx.network.commons.data.NettyxDataHandler;
 import io.nettyx.network.commons.properties.NettyxClientProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -49,9 +51,9 @@ public class NettyxClient {
                     @Override
                     protected void initChannel(SocketChannel sc) throws Exception {
                         //添加POJO对象解码器 禁止缓存类加载器
-                        sc.pipeline().addLast(new ObjectDecoder(size, ClassResolvers.cacheDisabled(this.getClass().getClassLoader())));
+                        sc.pipeline().addLast(new KryoDecoder(size));
                         //设置发送消息编码器
-                        sc.pipeline().addLast(new ObjectEncoder());
+                        sc.pipeline().addLast(new KryoEncoder());
                         if(nettyxClientProperties.getReadTimeout() > 0){
                             sc.pipeline().addLast(new ReadTimeoutHandler(nettyxClientProperties.getReadTimeout()));
                         }

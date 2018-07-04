@@ -13,6 +13,8 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import io.nettyx.network.commons.codec.KryoDecoder;
+import io.nettyx.network.commons.codec.KryoEncoder;
 import io.nettyx.network.commons.data.NettyxDataHandler;
 import io.nettyx.network.commons.properties.NettyxServerProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -57,9 +59,9 @@ public class NettyxServer {
 							protected void initChannel(SocketChannel sc) throws Exception {
 								//添加对象解码器 负责对序列化POJO对象进行解码 设置对象序列化最大长度为1M 防止内存溢出
 								//设置线程安全的WeakReferenceMap对类加载器进行缓存 支持多线程并发访问  防止内存溢出
-								sc.pipeline().addLast(new ObjectDecoder(size, ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
+								sc.pipeline().addLast(new KryoDecoder(size));
 								//添加对象编码器 在服务器对外发送消息的时候自动将实现序列化的POJO对象编码
-								sc.pipeline().addLast(new ObjectEncoder());
+								sc.pipeline().addLast(new KryoEncoder());
 								if(nettyxServerProperties.getReadTimeout() > 0){
 									sc.pipeline().addLast(new ReadTimeoutHandler(nettyxServerProperties.getReadTimeout()));
 								}
